@@ -22,7 +22,7 @@ def write_edge_list(edge_list,v_size):
     print(f'../DATA/randomTree/tree_{v_size}.txt')
     
 
-def generate_multi_rooted_directed_tree(minimum_nodes, maximum_nodes, gap_in_size):
+def generate_multi_rooted_directed_tree(minimum_nodes, maximum_nodes, gap_in_size,no_of_roots):
      for v_size in range(minimum_nodes,maximum_nodes,gap_in_size):
         #g = nx.read_adjlist(file, nodetype=int)
         D = {}
@@ -30,7 +30,7 @@ def generate_multi_rooted_directed_tree(minimum_nodes, maximum_nodes, gap_in_siz
         #print("initial edge _list is ", list(g.edges()))
         for u in g.nodes():
             D[u] = 0
-        root_list = random.sample(list(g.nodes()),50)
+        root_list = random.sample(list(g.nodes()),no_of_roots)
         queue     = []
         edge_list = []
         for u in root_list:
@@ -52,4 +52,4 @@ def generate_multi_rooted_directed_tree(minimum_nodes, maximum_nodes, gap_in_siz
         G.add_edges_from(edge_list)
         write_edge_list(edge_list,v_size)
         
-generate_multi_rooted_directed_tree(1000,50000,2000)
+generate_multi_rooted_directed_tree(1000,50000,2000,50)
